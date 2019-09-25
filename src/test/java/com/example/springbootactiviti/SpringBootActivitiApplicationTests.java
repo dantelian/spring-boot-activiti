@@ -1,0 +1,48 @@
+package com.example.springbootactiviti;
+
+import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.ProcessEngines;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.repository.DeploymentBuilder;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpringBootActivitiApplicationTests {
+
+	@Test
+	public void contextLoads() {
+	}
+
+	//部署流程
+	@Test
+	public void deployProcess(){
+		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+
+		RepositoryService repositoryService = processEngine.getRepositoryService();
+		DeploymentBuilder builder = repositoryService.createDeployment();
+		builder.addClasspathResource("processes/purchase.bpmn");
+		builder.deploy();
+	}
+
+	//启动流程
+	@Test
+	public void startProcess(){
+		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+
+		RuntimeService runtimeService = processEngine.getRuntimeService();
+		Map<String, Object> map = new HashMap<>();// 参数
+		map.put("user", "d861d55aa123b6414e55d936d51cb683");
+		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("purchase", map);//流程的名称，也可以使用ByID来启动流程
+		System.out.println(processInstance);
+	}
+
+}
