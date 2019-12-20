@@ -5,37 +5,37 @@
     <userTask activiti:assignee="${user}" activiti:exclusive="true" id="_3" name="采购申请"/>
     <userTask activiti:exclusive="true" id="_4" name="部门领导审批">
       <extensionElements>
-        <activiti:taskListener class="com.zzyt.common.activitiLitener.PurchaseNodeListener" event="create"/>
+        <activiti:taskListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseNodeListener" event="create"/>
       </extensionElements>
     </userTask>
     <exclusiveGateway gatewayDirection="Unspecified" id="_5" name="是否通过审批">
       <extensionElements>
-        <activiti:executionListener class="com.zzyt.common.activitiLitener.PurchaseGateWayListener" event="start"/>
+        <activiti:executionListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseGateWayListener" event="start"/>
       </extensionElements>
     </exclusiveGateway>
     <inclusiveGateway gatewayDirection="Unspecified" id="_6" name="条件审核">
       <extensionElements>
-        <activiti:executionListener class="com.zzyt.common.activitiLitener.PurchaseGateWayListener" event="start"/>
+        <activiti:executionListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseGateWayListener" event="start"/>
       </extensionElements>
     </inclusiveGateway>
     <userTask activiti:exclusive="true" id="_7" name="生产部审批">
       <extensionElements>
-        <activiti:taskListener class="com.zzyt.common.activitiLitener.PurchaseNodeListener" event="create"/>
+        <activiti:taskListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseNodeListener" event="create"/>
       </extensionElements>
     </userTask>
     <userTask activiti:exclusive="true" id="_8" name="安环部审批">
       <extensionElements>
-        <activiti:taskListener class="com.zzyt.common.activitiLitener.PurchaseNodeListener" event="create"/>
+        <activiti:taskListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseNodeListener" event="create"/>
       </extensionElements>
     </userTask>
     <userTask activiti:exclusive="true" id="_9" name="动力车间审批">
       <extensionElements>
-        <activiti:taskListener class="com.zzyt.common.activitiLitener.PurchaseNodeListener" event="create"/>
+        <activiti:taskListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseNodeListener" event="create"/>
       </extensionElements>
     </userTask>
     <userTask activiti:exclusive="true" id="_10" name="综管部审批">
       <extensionElements>
-        <activiti:taskListener class="com.zzyt.common.activitiLitener.PurchaseNodeListener" event="create"/>
+        <activiti:taskListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseNodeListener" event="create"/>
       </extensionElements>
     </userTask>
     <sequenceFlow id="_11" name="生产原料、其他物品" sourceRef="_6" targetRef="_7">
@@ -66,14 +66,14 @@
     </sequenceFlow>
     <userTask activiti:exclusive="true" id="_25" name="供销部汇总采购物品">
       <extensionElements>
-        <activiti:taskListener class="com.zzyt.common.activitiLitener.PurchaseNodeListener" event="create"/>
+        <activiti:taskListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseNodeListener" event="create"/>
       </extensionElements>
     </userTask>
     <endEvent id="_27" name="EndEvent"/>
     <sequenceFlow id="_28" sourceRef="_25" targetRef="_27"/>
     <exclusiveGateway gatewayDirection="Unspecified" id="_26" name="是否全部通过">
       <extensionElements>
-        <activiti:executionListener class="com.zzyt.common.activitiLitener.PurchaseGateWayListener" event="start"/>
+        <activiti:executionListener class="com.example.springbootactiviti.common.activitiLitener.PurchaseGateWayListener" event="start"/>
       </extensionElements>
     </exclusiveGateway>
     <sequenceFlow id="_29" sourceRef="_19" targetRef="_26"/>
