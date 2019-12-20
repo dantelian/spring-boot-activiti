@@ -1,9 +1,7 @@
 package com.example.springbootactiviti;
 
-import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.ProcessEngines;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
+import com.example.springbootactiviti.common.util.ActivitiUtil;
+import org.activiti.engine.*;
 import org.activiti.engine.repository.DeploymentBuilder;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.junit.Test;
@@ -43,6 +41,16 @@ public class SpringBootActivitiApplicationTests {
 		map.put("user", "d861d55aa123b6414e55d936d51cb683");
 		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("purchase", map);//流程的名称，也可以使用ByID来启动流程
 		System.out.println(processInstance);
+	}
+
+	@Test
+	public void next() {
+		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+
+//		TaskService taskService = processEngine.getTaskService();
+//		taskService.complete("12506");
+
+		ActivitiUtil.next("20002", null);
 	}
 
 }
