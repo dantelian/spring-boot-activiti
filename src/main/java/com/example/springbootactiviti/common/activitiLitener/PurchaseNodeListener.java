@@ -9,12 +9,13 @@ import org.activiti.engine.delegate.DelegateTask;
 import org.activiti.engine.delegate.TaskListener;
 import org.activiti.engine.impl.persistence.entity.VariableInstance;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class PurchaseNodeListener implements TaskListener {
 
-    private UserMapper userRoleMapper = SpringContextHolder.getBean(UserMapper.class);
+//    private UserMapper userRoleMapper = SpringContextHolder.getBean(UserMapper.class);
 
     @Override
     public void notify(DelegateTask delegateTask) {
@@ -23,6 +24,9 @@ public class PurchaseNodeListener implements TaskListener {
         String processName = "采购审批流程";
         String taskName = delegateTask.getName();
         List<String> users = null;
+        users = new ArrayList<>();
+        users.add("manager");
+
         switch (taskName){
             case "采购申请":
                 break;
