@@ -2,9 +2,9 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:mysql://192.168.1.154:3306/activiti?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://10.150.1.15:3306/activiti?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true&nullCatalogMeansCurrent=true
     username: root
-    password: 123456
+    password: zzyt@123
     driver-class-name: com.mysql.cj.jdbc.Driver
   activiti:
     # 自动部署验证设置:true-开启（默认）、false-关闭

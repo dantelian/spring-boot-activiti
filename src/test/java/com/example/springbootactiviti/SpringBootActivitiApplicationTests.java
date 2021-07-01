@@ -27,6 +27,7 @@ public class SpringBootActivitiApplicationTests {
 
 		RepositoryService repositoryService = processEngine.getRepositoryService();
 		DeploymentBuilder builder = repositoryService.createDeployment();
+//		builder.disableSchemaValidation();
 		builder.addClasspathResource("processes/purchase.bpmn");
 		builder.deploy();
 	}
@@ -47,10 +48,15 @@ public class SpringBootActivitiApplicationTests {
 	public void next() {
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 
+		ActivitiUtil.startProcess("purchase", "d861d55aa123b6414e55d936d51cb683", "test", null);
+
 //		TaskService taskService = processEngine.getTaskService();
 //		taskService.complete("12506");
 
-		ActivitiUtil.next("20002", null);
+//		ActivitiUtil.claim("30002", "manager");
+//		ActivitiUtil.next("27504", null);
+
+//		ActivitiUtil.regression("30002");
 	}
 
 }
